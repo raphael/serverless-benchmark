@@ -29,17 +29,17 @@ func (s *recorderSvc) RecordData(ctx context.Context, p *recorder.Datapoint) err
 	if err != nil {
 		return err
 	}
-	all = append(all, p)
+	all = append(all, p.Value)
 	return write(ctx, p.Service, p.Name, all)
 }
 
 // List lists all datapoints for the given service and name.
-func (s *recorderSvc) List(ctx context.Context, p *recorder.Series) ([]*recorder.Datapoint, error) {
+func (s *recorderSvc) List(ctx context.Context, p *recorder.Series) ([]float64, error) {
 	return read(ctx, p.Service, p.Name)
 }
 
-func read(ctx context.Context, service, name string) ([]*recorder.Datapoint, error) {
-	var pts []*recorder.Datapoint
+func read(ctx context.Context, service, name string) ([]float64, error) {
+	var pts []float64
 	err := withBucket(ctx, func(bucket *storage.BucketHandle) error {
 		fn := filename(service, name)
 		rc, err := bucket.Object(fn).NewReader(ctx)
@@ -67,7 +67,7 @@ func read(ctx context.Context, service, name string) ([]*recorder.Datapoint, err
 	return pts, err
 }
 
-func write(ctx context.Context, service, name string, pts []*recorder.Datapoint) error {
+func write(ctx context.Context, service, name string, pts []float64) error {
 	err := withBucket(ctx, func(bucket *storage.BucketHandle) error {
 		fn := filename(service, name)
 		wc := bucket.Object(fn).NewWriter(ctx)

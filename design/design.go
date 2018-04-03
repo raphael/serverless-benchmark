@@ -23,7 +23,7 @@ var _ = Service("recorder", func() {
 	Method("list", func() {
 		Description("List lists all recorded datapoints.")
 		Payload(Series)
-		Result(ArrayOf(Datapoint))
+		Result(ArrayOf(Float64))
 		HTTP(func() {
 			GET("/data")
 			Param("service")
@@ -52,9 +52,6 @@ var Datapoint = Type("Datapoint", func() {
 	Attribute("value", Float64, "Datapoint value.")
 	Attribute("name", String, "Name is the name of the datapoint.", func() {
 		Example("duration")
-	})
-	Attribute("labels", MapOf(String, String), "Labels is an arbitrary set of key/value pairs attached to the event.", func() {
-		Example(map[string]string{"algo": "type2"})
 	})
 	Required("service", "name", "value")
 })

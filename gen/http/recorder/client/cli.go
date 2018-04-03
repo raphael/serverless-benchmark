@@ -22,7 +22,7 @@ func BuildRecordDataPayload(recorderRecordDataBody string) (*recordersvc.Datapoi
 	{
 		err = json.Unmarshal([]byte(recorderRecordDataBody), &body)
 		if err != nil {
-			return nil, fmt.Errorf("invalid JSON for body, example of valid JSON:\n%s", "'{\n      \"labels\": {\n         \"algo\": \"type2\"\n      },\n      \"name\": \"duration\",\n      \"service\": \"lambda\",\n      \"value\": 0.7428001719977185\n   }'")
+			return nil, fmt.Errorf("invalid JSON for body, example of valid JSON:\n%s", "'{\n      \"name\": \"duration\",\n      \"service\": \"lambda\",\n      \"value\": 0.06173619203715241\n   }'")
 		}
 	}
 	if err != nil {
@@ -32,14 +32,6 @@ func BuildRecordDataPayload(recorderRecordDataBody string) (*recordersvc.Datapoi
 		Service: body.Service,
 		Value:   body.Value,
 		Name:    body.Name,
-	}
-	if body.Labels != nil {
-		v.Labels = make(map[string]string, len(body.Labels))
-		for key, val := range body.Labels {
-			tk := key
-			tv := val
-			v.Labels[tk] = tv
-		}
 	}
 	return v, nil
 }

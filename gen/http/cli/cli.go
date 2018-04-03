@@ -30,12 +30,9 @@ func UsageCommands() string {
 // UsageExamples produces an example of a valid invocation of the CLI tool.
 func UsageExamples() string {
 	return os.Args[0] + ` recorder record-data --body '{
-      "labels": {
-         "algo": "type2"
-      },
       "name": "duration",
       "service": "lambda",
-      "value": 0.7428001719977185
+      "value": 0.06173619203715241
    }'` + "\n" +
 		""
 }
@@ -166,12 +163,9 @@ RecordData creates a new datapoint.
 
 Example:
     `+os.Args[0]+` recorder record-data --body '{
-      "labels": {
-         "algo": "type2"
-      },
       "name": "duration",
       "service": "lambda",
-      "value": 0.7428001719977185
+      "value": 0.06173619203715241
    }'
 `, os.Args[0])
 }

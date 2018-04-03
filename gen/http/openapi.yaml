@@ -85,20 +85,20 @@ paths:
               schema: ""
               id: ""
               title: ""
-              type: ""
+              type: number
               items: null
               properties: {}
               definitions: {}
               description: ""
               defaultvalue: null
-              example: null
+              example: 0.57306284
               media: null
               readonly: false
               pathstart: ""
               links: []
-              ref: '#/definitions/DatapointResponseBody'
+              ref: ""
               enum: []
-              format: ""
+              format: double
               pattern: ""
               minimum: null
               maximum: null
@@ -214,146 +214,6 @@ paths:
     parameters: []
     extensions: {}
 definitions:
-  DatapointResponseBody:
-    schema: ""
-    id: ""
-    title: DatapointResponseBody
-    type: object
-    items: null
-    properties:
-      labels:
-        schema: ""
-        id: ""
-        title: ""
-        type: object
-        items: null
-        properties: {}
-        definitions: {}
-        description: Labels is an arbitrary set of key/value pairs attached to the
-          event.
-        defaultvalue: null
-        example:
-          algo: type2
-        media: null
-        readonly: false
-        pathstart: ""
-        links: []
-        ref: ""
-        enum: []
-        format: ""
-        pattern: ""
-        minimum: null
-        maximum: null
-        minlength: null
-        maxlength: null
-        required: []
-        additionalproperties: true
-        anyof: []
-      name:
-        schema: ""
-        id: ""
-        title: ""
-        type: string
-        items: null
-        properties: {}
-        definitions: {}
-        description: Name is the name of the datapoint.
-        defaultvalue: null
-        example: duration
-        media: null
-        readonly: false
-        pathstart: ""
-        links: []
-        ref: ""
-        enum: []
-        format: ""
-        pattern: ""
-        minimum: null
-        maximum: null
-        minlength: null
-        maxlength: null
-        required: []
-        additionalproperties: false
-        anyof: []
-      service:
-        schema: ""
-        id: ""
-        title: ""
-        type: string
-        items: null
-        properties: {}
-        definitions: {}
-        description: Service that created datapoint.
-        defaultvalue: null
-        example: lambda
-        media: null
-        readonly: false
-        pathstart: ""
-        links: []
-        ref: ""
-        enum: []
-        format: ""
-        pattern: ""
-        minimum: null
-        maximum: null
-        minlength: null
-        maxlength: null
-        required: []
-        additionalproperties: false
-        anyof: []
-      value:
-        schema: ""
-        id: ""
-        title: ""
-        type: number
-        items: null
-        properties: {}
-        definitions: {}
-        description: Datapoint value.
-        defaultvalue: null
-        example: 0.92756844
-        media: null
-        readonly: false
-        pathstart: ""
-        links: []
-        ref: ""
-        enum: []
-        format: double
-        pattern: ""
-        minimum: null
-        maximum: null
-        minlength: null
-        maxlength: null
-        required: []
-        additionalproperties: false
-        anyof: []
-    definitions: {}
-    description: Datapoint describes a single recording datapoint.
-    defaultvalue: null
-    example:
-      labels:
-        algo: type2
-      name: duration
-      service: lambda
-      value: 0.053547874
-    media: null
-    readonly: false
-    pathstart: ""
-    links: []
-    ref: ""
-    enum: []
-    format: ""
-    pattern: ""
-    minimum: null
-    maximum: null
-    minlength: null
-    maxlength: null
-    required:
-    - service
-    - name
-    - value
-    additionalproperties: false
-    anyof: []
   RecordDataRequestBody:
     schema: ""
     id: ""
@@ -361,34 +221,6 @@ definitions:
     type: object
     items: null
     properties:
-      labels:
-        schema: ""
-        id: ""
-        title: ""
-        type: object
-        items: null
-        properties: {}
-        definitions: {}
-        description: Labels is an arbitrary set of key/value pairs attached to the
-          event.
-        defaultvalue: null
-        example:
-          algo: type2
-        media: null
-        readonly: false
-        pathstart: ""
-        links: []
-        ref: ""
-        enum: []
-        format: ""
-        pattern: ""
-        minimum: null
-        maximum: null
-        minlength: null
-        maxlength: null
-        required: []
-        additionalproperties: true
-        anyof: []
       name:
         schema: ""
         id: ""
@@ -451,7 +283,7 @@ definitions:
         definitions: {}
         description: Datapoint value.
         defaultvalue: null
-        example: 0.60967505
+        example: 0.7022016
         media: null
         readonly: false
         pathstart: ""
@@ -471,11 +303,9 @@ definitions:
     description: ""
     defaultvalue: null
     example:
-      labels:
-        algo: type2
       name: duration
       service: lambda
-      value: 0.37128007
+      value: 0.34037277
     media: null
     readonly: false
     pathstart: ""

@@ -3,8 +3,7 @@ FUNCTION=sieve
 REGION=us-west-2
 
 build:
-	@go build -o handler
-	@zip handler.zip ./handler
+	@zip handler.zip ./index.js
 
 init: build
 	@aws lambda create-function \
@@ -12,9 +11,9 @@ init: build
 	--function-name $(FUNCTION) \
 	--memory 512 \
 	--role arn:aws:iam::586789346966:role/dynamo-lambda-prod-role \
-	--runtime go1.x \
+	--runtime nodejs8.10 \
 	--zip-file fileb://handler.zip \
-	--handler handler
+	--handler .handler
 
 deploy: build
 	@aws lambda update-function-code \
@@ -31,6 +30,17 @@ run:
 	@aws lambda invoke \
 	--region $(REGION) \
 	--function-name $(FUNCTION) \
-	--payload 10000 \
+	--payload 10 \
 	out.txt && \
 	cat out.txt
+
+benchmark:
+	@i=1 ; while [[ $$i -le 100 ]] ; do \
+	aws lambda invoke \
+	--region $(REGION) \
+	--function-name $(FUNCTION) \
+	--payload 10000000 \
+	out.txt > /dev/null && \
+	echo lambda: $$i% && \
+	((i = i + 1)) ; \
+	done

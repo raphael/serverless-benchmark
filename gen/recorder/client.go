@@ -34,11 +34,11 @@ func (c *Client) RecordData(ctx context.Context, p *Datapoint) (err error) {
 }
 
 // List calls the "list" endpoint of the "recorder" service.
-func (c *Client) List(ctx context.Context, p *Series) (res []*Datapoint, err error) {
+func (c *Client) List(ctx context.Context, p *Series) (res []float64, err error) {
 	var ires interface{}
 	ires, err = c.ListEndpoint(ctx, p)
 	if err != nil {
 		return
 	}
-	return ires.([]*Datapoint), nil
+	return ires.([]float64), nil
 }

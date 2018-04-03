@@ -16,7 +16,7 @@ type Service interface {
 	// RecordData creates a new datapoint.
 	RecordData(context.Context, *Datapoint) error
 	// List lists all recorded datapoints.
-	List(context.Context, *Series) ([]*Datapoint, error)
+	List(context.Context, *Series) ([]float64, error)
 }
 
 // ServiceName is the name of the service as defined in the design. This is the
@@ -37,8 +37,6 @@ type Datapoint struct {
 	Value float64
 	// Name is the name of the datapoint.
 	Name string
-	// Labels is an arbitrary set of key/value pairs attached to the event.
-	Labels map[string]string
 }
 
 // Series is the payload type of the recorder service list method.

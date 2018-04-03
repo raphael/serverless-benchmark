@@ -7,3 +7,6 @@ functions/google/.gcloudignore
 functions/google/function.zip
 functions/google/main
 functions/google/node_modules/execer
+functions/azure/sieve.zip
+functions/google/sieve.zip
+functions/google/handler.zip

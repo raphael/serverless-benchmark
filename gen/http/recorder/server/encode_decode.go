@@ -12,7 +12,6 @@ import (
 	"io"
 	"net/http"
 
-	recordersvc "github.com/raphael/recorder/gen/recorder"
 	goa "goa.design/goa"
 	goahttp "goa.design/goa/http"
 )
@@ -54,9 +53,9 @@ func DecodeRecordDataRequest(mux goahttp.Muxer, decoder func(*http.Request) goah
 // list endpoint.
 func EncodeListResponse(encoder func(context.Context, http.ResponseWriter) goahttp.Encoder) func(context.Context, http.ResponseWriter, interface{}) error {
 	return func(ctx context.Context, w http.ResponseWriter, v interface{}) error {
-		res := v.([]*recordersvc.Datapoint)
+		res := v.([]float64)
 		enc := encoder(ctx, w)
-		body := NewDatapointResponseBody(res)
+		body := res
 		w.WriteHeader(http.StatusOK)
 		return enc.Encode(body)
 	}

@@ -127,7 +127,7 @@ func DecodeListResponse(decoder func(*http.Response) goahttp.Decoder, restoreBod
 		switch resp.StatusCode {
 		case http.StatusOK:
 			var (
-				body []*DatapointResponseBody
+				body []float64
 				err  error
 			)
 			err = decoder(resp).Decode(&body)
@@ -135,7 +135,7 @@ func DecodeListResponse(decoder func(*http.Response) goahttp.Decoder, restoreBod
 				return nil, goahttp.ErrDecodingError("recorder", "list", err)
 			}
 
-			return NewListDatapointOK(body), nil
+			return body, nil
 		default:
 			body, _ := ioutil.ReadAll(resp.Body)
 			return nil, goahttp.ErrInvalidResponse("account", "create", resp.StatusCode, string(body))

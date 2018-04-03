@@ -1,6 +1,7 @@
 const US_PER_SEC = 1e6;
 const NS_PER_US = 1e3;
 const https = require('https');
+
 function eratosthenes(n) {
 	var sieve = [];
 	var output = [];
@@ -25,8 +26,8 @@ function eratosthenes(n) {
 	return arr;
 };
 
-exports.sieve = function (req, res) {
-	var n = req.query.n || (req.body && req.body.n);
+exports.handler = function(event, context, callback) {
+	var n = event
 	if (n) {
 		var start = process.hrtime()
 		eratosthenes(n);
@@ -39,33 +40,32 @@ exports.sieve = function (req, res) {
 			path: '/data',
 			method: 'POST'
 		};
-		var rec = https.request(options, function (resp) {
+		var req = https.request(options, function (res) {
 			var body = "";
-			resp.on('data', function (b) {
+			res.on('data', function (b) {
 				body += b;
 			})
-			resp.on('end', function() {
-				status = resp.statusCode;
+			res.on('end', function() {
+				status = res.statusCode;
 				if (status != 200) {
-					res.status(500).json({"error": body}).end();
-					return
+					callback(body);
+					context.done();
+					return;
 				}
 
-				res.status(200).json(dur).end()
+				callback(null, dur);
+				context.done();
 			});
 		});
-		rec.write("{" +
-			'"service": "google",' +
+		req.write("{" +
+			'"service": "lambda",' +
 			'"name": "sieve-' + n + '",' +
 			'"value":' + dur +
 			"}")
-		rec.on("error", function() {
-			res.status(500).send("cannot make request to recorder");
-			return
-		});
-		rec.end()
+		req.end()
 	}
 	else {
-		res.status(400).send("Please pass a value for N in the request body");
+		callback("Please pass a value for N in the request body")
+		context.done();
 	}
 };
