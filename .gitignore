@@ -1,0 +1,9 @@
+functions/lambda/handler
+functions/lambda/handler.zip
+functions/lambda/out.txt
+cmd/recordercli/recordercli
+cmd/recordersvc/recordersvc
+functions/google/.gcloudignore
+functions/google/function.zip
+functions/google/main
+functions/google/node_modules/execer

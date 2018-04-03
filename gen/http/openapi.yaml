@@ -1,0 +1,501 @@
+swagger: "2.0"
+info:
+  title: Recorder API
+  description: Recorder records arbitrary data together with the recording timestamp
+  termsofservice: ""
+  contact: null
+  license: null
+  version: ""
+  extensions: {}
+host: localhost:8080
+basepath: ""
+schemes: []
+consumes: []
+produces: []
+paths:
+  /data:
+    ref: ""
+    get:
+      tags:
+      - recorder
+      summary: list recorder
+      description: List lists all recorded datapoints.
+      externaldocs: null
+      operationid: recorder#list
+      consumes: []
+      produces: []
+      parameters:
+      - name: service
+        in: query
+        description: Service that created datapoint.
+        required: true
+        schema: null
+        type: string
+        format: ""
+        allowemptyvalue: false
+        items: null
+        collectionformat: ""
+        default: null
+        maximum: null
+        exclusivemaximum: false
+        minimum: null
+        exclusiveminimum: false
+        maxlength: null
+        minlength: null
+        pattern: ""
+        maxitems: null
+        minitems: null
+        uniqueitems: false
+        enum: []
+        multipleof: 0
+        extensions: {}
+      - name: name
+        in: query
+        description: Name is the name of the datapoint.
+        required: true
+        schema: null
+        type: string
+        format: ""
+        allowemptyvalue: false
+        items: null
+        collectionformat: ""
+        default: null
+        maximum: null
+        exclusivemaximum: false
+        minimum: null
+        exclusiveminimum: false
+        maxlength: null
+        minlength: null
+        pattern: ""
+        maxitems: null
+        minitems: null
+        uniqueitems: false
+        enum: []
+        multipleof: 0
+        extensions: {}
+      responses:
+        "200":
+          description: OK response.
+          schema:
+            schema: ""
+            id: ""
+            title: ""
+            type: array
+            items:
+              schema: ""
+              id: ""
+              title: ""
+              type: ""
+              items: null
+              properties: {}
+              definitions: {}
+              description: ""
+              defaultvalue: null
+              example: null
+              media: null
+              readonly: false
+              pathstart: ""
+              links: []
+              ref: '#/definitions/DatapointResponseBody'
+              enum: []
+              format: ""
+              pattern: ""
+              minimum: null
+              maximum: null
+              minlength: null
+              maxlength: null
+              required: []
+              additionalproperties: false
+              anyof: []
+            properties: {}
+            definitions: {}
+            description: ""
+            defaultvalue: null
+            example: null
+            media: null
+            readonly: false
+            pathstart: ""
+            links: []
+            ref: ""
+            enum: []
+            format: ""
+            pattern: ""
+            minimum: null
+            maximum: null
+            minlength: null
+            maxlength: null
+            required: []
+            additionalproperties: false
+            anyof: []
+          headers: {}
+          ref: ""
+          extensions: {}
+      schemes:
+      - http
+      deprecated: false
+      security: []
+      extensions: {}
+    put: null
+    post:
+      tags:
+      - recorder
+      summary: record-data recorder
+      description: RecordData creates a new datapoint.
+      externaldocs: null
+      operationid: recorder#record-data
+      consumes: []
+      produces: []
+      parameters:
+      - name: RecordDataRequestBody
+        in: body
+        description: ""
+        required: true
+        schema:
+          schema: ""
+          id: ""
+          title: ""
+          type: ""
+          items: null
+          properties: {}
+          definitions: {}
+          description: ""
+          defaultvalue: null
+          example: null
+          media: null
+          readonly: false
+          pathstart: ""
+          links: []
+          ref: '#/definitions/RecordDataRequestBody'
+          enum: []
+          format: ""
+          pattern: ""
+          minimum: null
+          maximum: null
+          minlength: null
+          maxlength: null
+          required: []
+          additionalproperties: false
+          anyof: []
+        type: ""
+        format: ""
+        allowemptyvalue: false
+        items: null
+        collectionformat: ""
+        default: null
+        maximum: null
+        exclusivemaximum: false
+        minimum: null
+        exclusiveminimum: false
+        maxlength: null
+        minlength: null
+        pattern: ""
+        maxitems: null
+        minitems: null
+        uniqueitems: false
+        enum: []
+        multipleof: 0
+        extensions: {}
+      responses:
+        "200":
+          description: OK response.
+          schema: null
+          headers: {}
+          ref: ""
+          extensions: {}
+      schemes:
+      - http
+      deprecated: false
+      security: []
+      extensions: {}
+    delete: null
+    options: null
+    head: null
+    patch: null
+    parameters: []
+    extensions: {}
+definitions:
+  DatapointResponseBody:
+    schema: ""
+    id: ""
+    title: DatapointResponseBody
+    type: object
+    items: null
+    properties:
+      labels:
+        schema: ""
+        id: ""
+        title: ""
+        type: object
+        items: null
+        properties: {}
+        definitions: {}
+        description: Labels is an arbitrary set of key/value pairs attached to the
+          event.
+        defaultvalue: null
+        example:
+          algo: type2
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: ""
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: true
+        anyof: []
+      name:
+        schema: ""
+        id: ""
+        title: ""
+        type: string
+        items: null
+        properties: {}
+        definitions: {}
+        description: Name is the name of the datapoint.
+        defaultvalue: null
+        example: duration
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: ""
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: false
+        anyof: []
+      service:
+        schema: ""
+        id: ""
+        title: ""
+        type: string
+        items: null
+        properties: {}
+        definitions: {}
+        description: Service that created datapoint.
+        defaultvalue: null
+        example: lambda
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: ""
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: false
+        anyof: []
+      value:
+        schema: ""
+        id: ""
+        title: ""
+        type: number
+        items: null
+        properties: {}
+        definitions: {}
+        description: Datapoint value.
+        defaultvalue: null
+        example: 0.92756844
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: double
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: false
+        anyof: []
+    definitions: {}
+    description: Datapoint describes a single recording datapoint.
+    defaultvalue: null
+    example:
+      labels:
+        algo: type2
+      name: duration
+      service: lambda
+      value: 0.053547874
+    media: null
+    readonly: false
+    pathstart: ""
+    links: []
+    ref: ""
+    enum: []
+    format: ""
+    pattern: ""
+    minimum: null
+    maximum: null
+    minlength: null
+    maxlength: null
+    required:
+    - service
+    - name
+    - value
+    additionalproperties: false
+    anyof: []
+  RecordDataRequestBody:
+    schema: ""
+    id: ""
+    title: RecordDataRequestBody
+    type: object
+    items: null
+    properties:
+      labels:
+        schema: ""
+        id: ""
+        title: ""
+        type: object
+        items: null
+        properties: {}
+        definitions: {}
+        description: Labels is an arbitrary set of key/value pairs attached to the
+          event.
+        defaultvalue: null
+        example:
+          algo: type2
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: ""
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: true
+        anyof: []
+      name:
+        schema: ""
+        id: ""
+        title: ""
+        type: string
+        items: null
+        properties: {}
+        definitions: {}
+        description: Name is the name of the datapoint.
+        defaultvalue: null
+        example: duration
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: ""
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: false
+        anyof: []
+      service:
+        schema: ""
+        id: ""
+        title: ""
+        type: string
+        items: null
+        properties: {}
+        definitions: {}
+        description: Service that created datapoint.
+        defaultvalue: null
+        example: lambda
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: ""
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: false
+        anyof: []
+      value:
+        schema: ""
+        id: ""
+        title: ""
+        type: number
+        items: null
+        properties: {}
+        definitions: {}
+        description: Datapoint value.
+        defaultvalue: null
+        example: 0.60967505
+        media: null
+        readonly: false
+        pathstart: ""
+        links: []
+        ref: ""
+        enum: []
+        format: double
+        pattern: ""
+        minimum: null
+        maximum: null
+        minlength: null
+        maxlength: null
+        required: []
+        additionalproperties: false
+        anyof: []
+    definitions: {}
+    description: ""
+    defaultvalue: null
+    example:
+      labels:
+        algo: type2
+      name: duration
+      service: lambda
+      value: 0.37128007
+    media: null
+    readonly: false
+    pathstart: ""
+    links: []
+    ref: ""
+    enum: []
+    format: ""
+    pattern: ""
+    minimum: null
+    maximum: null
+    minlength: null
+    maxlength: null
+    required:
+    - service
+    - name
+    - value
+    additionalproperties: false
+    anyof: []
+parameters: {}
+responses: {}
+securitydefinitions: {}
+tags: []
+externaldocs: null
