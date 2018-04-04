@@ -1,6 +1,7 @@
-GOOS=linux
-FUNCTION=sieve
-REGION=us-west-2
+GOOS = linux
+FUNCTION = sieve
+REGION = us-west-2
+MEMORY ?= 512
 
 build:
 	@zip handler.zip ./index.js
@@ -9,7 +10,7 @@ init: build
 	@aws lambda create-function \
 	--region $(REGION) \
 	--function-name $(FUNCTION) \
-	--memory 512 \
+	--memory $(MEMORY) \
 	--role arn:aws:iam::586789346966:role/dynamo-lambda-prod-role \
 	--runtime nodejs8.10 \
 	--zip-file fileb://handler.zip \

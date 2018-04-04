@@ -1,7 +1,6 @@
 GOOS=linux
 GROUP=functions
 FUNCTION=benchmarksieve
-# REGION="West US 2"
 REGION=westus2
 STORAGE=benchmarkserverless
 OUT=sieve.zip

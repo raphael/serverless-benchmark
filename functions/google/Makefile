@@ -1,13 +1,14 @@
-FUNCTION=sieve
-REGION=us-central1
-PROJECT=optima-tve
+FUNCTION = sieve
+REGION = us-central1
+PROJECT = optima-tve
+MEMORY ?= 512
 
 build:
 	@zip handler.zip ./index.js
 
 deploy: build
 	@gcloud beta functions deploy $(FUNCTION) \
-	--memory=512 \
+	--memory=$(MEMORY) \
 	--region=$(REGION) \
 	--source=. \
 	--trigger-http \
